@@ -1,6 +1,13 @@
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), "lib"))
 
-require ".bundle/environment"
+begin
+  require ".bundle/environment"
+rescue LoadError  => e
+  STDERR.puts e.message
+  STDERR.puts "Try running `bundle lock` after installed bundler gem."
+  exit!
+end
+
 require "integrity"
 
 # Uncomment as appropriate for the notifier you want to use
