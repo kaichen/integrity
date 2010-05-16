@@ -20,6 +20,7 @@ namespace :test do
   end
 end
 
+desc "Perform non destructive database automigration"
 task :db do
   require "init"
   DataMapper.auto_upgrade!
